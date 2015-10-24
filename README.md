@@ -1,5 +1,7 @@
 # Node学園祭のスライド
 
+Issue: [技術文章をソフトウェア開発する話 · Issue #14 · azu/slide](https://github.com/azu/slide/issues/14 "技術文章をソフトウェア開発する話 · Issue #14 · azu/slide")
+
 ## Install
 
     npm instal
