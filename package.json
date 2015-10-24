@@ -10,6 +10,7 @@
   },
   "scripts": {
     "prepublish": "gitbook install",
+    "postinstall": "npm run build",
     "start": "npm run split && gitbook serve",
     "build": "npm run split && gitbook build",
     "split": "markdown-splitter ./md/all.md -o slide/ --summary ./SUMMARY.md",
