@@ -63,3 +63,7 @@ rules:
       # 日本語+単語境界の仕様は自分で調べてね…！
       - from: 今日もJS祭り
         to:   今日もjs祭り
+
+  - expected: 技術文書
+    patterns:
+      - 技術文章
