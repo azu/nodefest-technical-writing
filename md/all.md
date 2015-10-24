@@ -175,6 +175,16 @@ gitbook pdf|epub|mobi
 
 ## gitbook.comとの連携
 
+![gitbook integration](../img/gitbook-integration.jpg)
+
+----
+
+## gitbook.comとの連携機能
+
+- コミット毎にプレビューできる！
+    - Pull Requestに対してもプレビューが生成される
+    - 自動でHTML/PDF/epub/mobiが生成される
+- gitbook.com上で書籍を公開できる
 
 ----
 
