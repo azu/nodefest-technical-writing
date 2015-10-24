@@ -179,9 +179,15 @@ gitbook pdf|epub|mobi
 
 ----
 
-## gitbook.comとの連携機能
+## Pull Requestでのレビュー
 
-![right](../img/gitbook-pullrequst.jpg)
+![pullrequest](../img/gitbook-pullrequst.jpg)
+
+Pull Requestのコミット毎にプレビューが行える
+
+----
+
+## gitbook.comとの連携機能
 
 - コミット毎にプレビューできる！
     - Pull Requestに対してもプレビューが生成される
