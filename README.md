@@ -14,7 +14,7 @@ Open GitBook preview
     # Serving book on http://localhost:4000
 
 - `md/all.md` is source file.
-- `slice/*.md` is generated files(should not modified!).
+- `slice/*.md` is generated files(should not modify!).
 
 ## Tests
 
