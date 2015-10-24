@@ -28,6 +28,7 @@
     "eslint": "^1.3.0",
     "eslint-plugin-markdown": "git://github.com/eslint/eslint-plugin-markdown.git",
     "espower-babel": "^3.3.0",
+    "gitbook": "2.4.1",
     "gitbook-cli": "^0.3.6",
     "gitbook-plugin-include-codeblock": "^1.4.0",
     "gitbook-plugin-japanese-support": "0.0.1",

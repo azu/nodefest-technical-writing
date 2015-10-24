@@ -1,3 +1,13 @@
 .page-inner {
     max-width: 80% !important;
 }
+
+img[alt *="right"] {
+    float: right;
+    margin-left: 1.1em;
+}
+
+img[alt *="left"] {
+    float: left;
+    margin-right: 1.1em;
+}

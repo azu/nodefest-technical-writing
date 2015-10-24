@@ -1,6 +1,17 @@
 {
-  "gitbook": "2.x.x",
+  "gitbook": ">=2.0.0",
+  "name": "nodefest-technical-writing",
+  "title": "技術文書をソフトウェア開発する話",
+  "description": "技術文書をソフトウェア開発のように書くためのツールや方法",
+  "language": "jp",
   "styles": {
     "website": "css/index.css"
+  },
+  "plugins": ["-fontsettings"],
+  "pluginsConfig": {
+    "fontSettings": {
+      "theme": "night",
+      "size": 4
+    }
   }
 }
