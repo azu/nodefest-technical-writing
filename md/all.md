@@ -419,3 +419,67 @@ $ summary-to-path SUMMARY.md | xargs textlint
 ```
 
 -----
+
+# textlintの仕組み
+
+1. Markdown or TextをASTに変換
+2. ASTは**TxtNode**というインターフェースを持つ
+    - 例えば、`node.type`が"Header"という種類
+    - `node.raw`にテキストの中身、`node.loc`に行番号等の位置
+
+-----
+
+## Markdown -> AST
+
+![textlint-ast, inline](../img/textlint-ast.png)
+
+
+-----
+
+## AST
+
+![ast-lint, inline](../img/ast-lint.png)
+
+-----
+
+
+## textlintのルールの仕組み
+
+- ルールスクリプトは`node.type`ごとにイベントを受け取るような書き方をする
+
+```js
+return {
+  [Syntax.Link] = function (node) {
+    // Link nodeの時にこのチェック関数が呼ばれる
+    // 問題があったらcontext.report()で報告する
+  }
+};
+```
+
+-----
+
+## 仕組みの仕組み
+
+- textlintとルールスクリプトの関係はpub/sub
+- ルールスクリプトはやってくるnodeだけを考えればLintを書ける
+- やってくるnodeの流れは木構造を走査する形 - [txt-ast-traverse](https://github.com/azu/txt-ast-traverse "txt-ast-traverse")
+- ルールが疎結合なので、自由にルールを追加出来る！
+
+-----
+
+## 木構造
+
+![gif visualize-txt-traverse,right, fit](http://gyazo.com/155c68f0f9ff35e0a549d655a787c01e.gif)
+
+----
+
+
+## エラーの通知
+
+![result, inline](../img/lint-error.png)
+
+- `context.report()`で報告されたエラーをフォーマッターで整形して出力
+
+
+
+-----
