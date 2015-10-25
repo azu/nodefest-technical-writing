@@ -273,3 +273,58 @@ Pull Requestのコミット毎にプレビューが行える
     - 利用者がどのルールを使うかを決める事ができる
     - 利用者がルールを自由に追加できる
 - そのために[textlint](https://github.com/azu/textlint "textlint")を作った
+
+-----
+
+# [textlint](https://github.com/azu/textlint "textlint")
+
+- Markdownなどのテキストファイルを扱うLintツール
+- デフォルトのルールはない
+- ESLintと同じくPlugableにルールを追加することができる
+- JavaScriptでルールを簡単に書くことができる
+
+-----
+
+## ルールの紹介
+
+[textlint](https://github.com/azu/textlint "textlint")のルール紹介
+
+
+----
+
+## ですます調とである調の統一
+
+- [textlint-rule-no-mix-dearu-desumasu](https://github.com/azu/textlint-rule-no-mix-dearu-desumasu)
+    - 文中の敬体(ですます調)と常体(である調)をどちらかに統一する
+    - 元ネタは[RedPen](http://redpen.cc/ "RedPen")
+
+----
+
+## 技術書は一朝一夕で作れない
+
+- 技術書の場合一日で書き終わらない
+- 日によって敬体(ですます調)だったり、常体(である調)だったりする
+    - 昨日の自分は敬体で、今日は常体だったり…
+- 敬体(ですます調)と常体(である調)の統一を自動的にチェックする
+
+-----
+
+## textlintのルール
+
+- [textlint-rule-max-ten](https://github.com/azu/textlint-rule-max-ten)
+	- 一文に利用できる`、`の数をチェックするルール
+- [textlint-rule-spellcheck-tech-word](https://github.com/azu/textlint-rule-spellcheck-tech-word)
+	- WEB+DB用語統一ルールベースの単語チェックするルール
+- [textlint-rule-no-start-duplicated-conjunction](https://github.com/azu/textlint-rule-no-start-duplicated-conjunction "azu/textlint-rule-no-start-duplicated-conjunction")
+	- 「しかし、〜。 しかし、〜。」など同じ接続詞が連続してないかをチェックするルール
+- textlintのルールは以下にまとめられている
+	- [Collection of textlint rule · azu/textlint Wiki](https://github.com/azu/textlint/wiki/Collection-of-textlint-rule "Collection of textlint rule · azu/textlint Wiki")
+
+----
+
+# JTFスタイルガイド
+
+![right chara](../img/jtf_chara.gif)
+
+
+-----
