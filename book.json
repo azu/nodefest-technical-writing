@@ -6,7 +6,10 @@
   "styles": {
     "website": "css/index.css"
   },
-  "plugins": ["-fontsettings"],
+  "plugins": [
+    "-fontsettings",
+    "japanese-support"
+  ],
   "pluginsConfig": {
     "fontSettings": {
       "theme": "night",

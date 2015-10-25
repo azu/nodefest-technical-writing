@@ -420,6 +420,16 @@ $ summary-to-path SUMMARY.md | xargs textlint
 
 -----
 
+# Atom + [linter-textlint](https://github.com/1000ch/linter-textlint "1000ch/linter-textlint")
+
+> [textlintのAtomプラグイン - 1000ch.net](https://1000ch.net/posts/2015/linter-textlint.html "textlintのAtomプラグイン - 1000ch.net")
+
+![fit,inline, linter-textlint](https://gyazo.com/af14634690a0515c2c5ce56bd2fd6431.gif)
+
+リアルタイムにチェックできて便利
+
+-----
+
 # textlintの仕組み
 
 1. Markdown or TextをASTに変換
@@ -497,3 +507,81 @@ export default function(context){
     - ランタイムエラーになる前に問題を見つける
 - チェックルールは自由に拡張できないといけない
     - 自然言語は柔軟なのでプロジェクト毎にルールが異なる
+    
+----
+
+# サンプルコードのテスト
+
+![example-code.png](../img/example-code.png)
+
+----
+
+## サンプルコードの種類
+
+- 技術書に載せるコードを書く方法は2種類
+- 外部ファイルとしてコードを書いて読み込む
+- 文中にインラインでコードを書く
+
+-----
+
+## 外部ファイルとしてコードを書いて読み込む
+
+- 普通に`.js`などのファイルとして書くだけ
+- ファイルに対して[ESLint](http://eslint.org/ "ESLint")でLint
+- コードに対してテストを書く
+- 要は普通のJavaScript
+
+----
+
+## GitBookと外部ファイル
+
+- [azu/gitbook-plugin-include-codeblock](https://github.com/azu/gitbook-plugin-include-codeblock "azu/gitbook-plugin-include-codeblock")
+- いい感じに外部ファイルを`CodeBlock`として読み込むGitBookプラグイン
+
+```
+[include, test.js](example/test.js)
+```
+
+`include`というコマンドがラベルにあれば展開される。
+=> GitHub上ではただのリンクとなる(Fallback)
+
+----
+
+## インラインコードのLint
+
+    これは`a`という変数を定義している。
+    ```js
+    var a = 1;
+    ```
+
+- インラインに書かれているコードに対してもLintを行う
+- インラインコードは実行されないのでtypoし易い
+
+----
+
+## インラインコードのLint
+
+- [eslint/eslint-plugin-markdown](https://github.com/eslint/eslint-plugin-markdown "eslint/eslint-plugin-markdown")を利用
+- ESLintのプラグインとしてインラインコードをLintできる
+    - `js`や`javascript`といったCodeBlockに対してLint
+
+
+----
+
+## インラインコードのLint問題
+
+- インラインコードは実行**できない**のが正常という問題
+- 説明するためにコードの一部を取りだす場合
+    - コードとしては実行できない
+    - コードブロックのみで見ると変数が未定義となってる
+- => インラインコード専用のゆるいルールを作る
+
+----
+
+## インラインコード専用のゆるいルール
+
+- 設定ファイルを分けることで解決！
+- 通常のコード用: [.eslintrc](https://github.com/azu/JavaScript-Plugin-Architecture/blob/master/.eslintrc ".eslintrc")
+- インラインコード用: [.md.eslintrc](https://github.com/azu/JavaScript-Plugin-Architecture/blob/master/.md.eslintrc ".md.eslintrc")
+    - `.eslintrc`を継承
+    - `no-undef`や`no-unused-vars`などを無効化
