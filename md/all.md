@@ -264,7 +264,7 @@ Pull Requestのコミット毎にプレビューが行える
 
 ------
 
-## 自然言語のLintは拡張可能であるべき
+## 自然言語のLintは拡張可能
 
 - 自然言語にスタンダードなルールはない
     - JSHintのように1つの固まりとして提供するのは難しい
@@ -304,7 +304,7 @@ Pull Requestのコミット毎にプレビューが行える
 
 - 技術書の場合一日で書き終わらない
 - 日によって敬体(ですます調)だったり、常体(である調)だったりする
-    - 昨日の自分は敬体で、今日は常体だったり…
+    - 昨日は敬体で、今日は常体だったり…
 - 敬体(ですます調)と常体(である調)の統一を自動的にチェックする
 
 -----
@@ -312,19 +312,110 @@ Pull Requestのコミット毎にプレビューが行える
 ## textlintのルール
 
 - [textlint-rule-max-ten](https://github.com/azu/textlint-rule-max-ten)
-	- 一文に利用できる`、`の数をチェックするルール
+    - 一文に利用できる`、`の数をチェックするルール
 - [textlint-rule-spellcheck-tech-word](https://github.com/azu/textlint-rule-spellcheck-tech-word)
-	- WEB+DB用語統一ルールベースの単語チェックするルール
+    - WEB+DB用語統一ルールベースの単語チェックするルール
 - [textlint-rule-no-start-duplicated-conjunction](https://github.com/azu/textlint-rule-no-start-duplicated-conjunction "azu/textlint-rule-no-start-duplicated-conjunction")
-	- 「しかし、〜。 しかし、〜。」など同じ接続詞が連続してないかをチェックするルール
+    - 「しかし、〜。 しかし、〜。」など同じ接続詞が連続してないかをチェックするルール
 - textlintのルールは以下にまとめられている
-	- [Collection of textlint rule · azu/textlint Wiki](https://github.com/azu/textlint/wiki/Collection-of-textlint-rule "Collection of textlint rule · azu/textlint Wiki")
+    - [Collection of textlint rule · azu/textlint Wiki](https://github.com/azu/textlint/wiki/Collection-of-textlint-rule "Collection of textlint rule · azu/textlint Wiki")
 
 ----
 
-# JTFスタイルガイド
+## JTFスタイルガイド
 
 ![right chara](../img/jtf_chara.gif)
 
+- [textlint-plugin-JTF-style](https://github.com/azu/textlint-plugin-JTF-style "textlint-plugin-JTF-style")
+- [JTF日本語標準スタイルガイド（翻訳用）](https://www.jtf.jp/jp/style_guide/styleguide_top.html "JTF日本語標準スタイルガイド（翻訳用）")でチェックできるtextlintルールセット
+    - 40種類ぐらいのルールでチェックできる
+    - もちろん個別に無効化できる
+- 技術文書は元々英語圏の技術についてが多いのでマッチするツールも多い
+
+-----
+
+# 表記揺れ
+
+> にげんん は ひうょきゆれ への たせいい を ものつで しよんう でなきい
+
+人間は表記揺れへの耐性を持つので信用出来ない
+
+-----
+
+## 人間は表記揺れを吸収できる
+
+> こんちには みさなん おんげき ですか？　わしたは げんき です。
+
+- [「読めてしまう」文章ネタの起源と歴史［絵文録ことのは］2009/05/10](http://www.kotono8.com/2009/05/10yometeshimau.html "「読めてしまう」文章ネタの起源と歴史［絵文録ことのは］2009/05/10")
+
+-----
+
+### クローズドテスト
+
+![right](https://monosnap.com/file/YpmK6eo4yuu3yJSvwK8xjM9o3tjp7e.png)
+
+- 逆に穴あきでも読めることでリーダビリティをテストする手法もある
+
+> 一定間隔で穴が開いた状態のテキストを読んで、ユーザーが文章の意味をくみ取れるかをチェックする為のテスト
+
+- [JavaScript - kuromoji.jsを使って日本語クローズテスト - Qiita](http://qiita.com/pppp403/items/59d90a4483ba86826e63 "JavaScript - kuromoji.jsを使って日本語クローズテスト - Qiita")
+
+
+------
+
+## 表記揺れは機械的にチェック
+
+- 目視の確認では表記揺れは思ってる以上に見つけにくい
+- IMEが間違った単語を記憶することで繰り返し発生する
+- 一度間違ったものを辞書に加えて継続的にチェックする必要
+    - リグレッションテストが重要
+
+------
+
+## プロジェクト固有の表記揺れ
+
+- 表記揺れのチェックに汎用的な辞書/ルールはない
+    - 全ての表現が一意ならそもそも表記揺れなんて起きない
+    - 技術文書の中で一貫した表現を保証するためのもの
+- プロジェクト固有のルールで表記揺れのチェックが必要
+
+-----
+
+## [textlint-rule-prh](https://github.com/azu/textlint-rule-prh "textlint-rule-prh")
+
+
+- [vvakame/prh](https://github.com/vvakame/prh "vvakame/prh") を使ったtextlintルール
+- ymlでルールを簡単に追加できる(正規表現や大文字小文字などよくある表記揺れは簡単に書ける仕組みがある)
+
+```
+rules:
+  - expected: タスク自動化ツール
+    patterns:
+      - /Task Runner/i
+      - タスクランナー
+      - タスク管理ツール
+```
+
+-----
+
+## なぜプロジェクト毎に表記揺れルール？
+
+- 表記揺れを見つけた時にルールを追加して**から**修正
+    - [connet => **C**onnectに統一 · Issue #48 · azu/JavaScript-Plugin-Architecture](https://github.com/azu/JavaScript-Plugin-Architecture/issues/48 "**C**onnectに統一しよう · Issue #48 · azu/JavaScript-Plugin-Architecture")
+    - リグレッションテストと同じ意味合い
+- 表記がルールとして明文化できるので[Contribute](https://github.com/azu/JavaScript-Plugin-Architecture/blob/master/CONTRIBUTING.md "Contribute")しやすい
+
+-----
+
+## GitBook + textlint
+
+- GitBookは`SUMMARY.md`から各章の.mdへのリンクがある
+- [azu/gitbook-summary-to-path](https://github.com/azu/gitbook-summary-to-path "azu/gitbook-summary-to-path")
+- SUMMARY.mdに書かれているファイルを`textlint`する
+
+```sh
+$ summary-to-path SUMMARY.md | xargs textlint
+# 全ての章がtextlintでLintできる
+```
 
 -----
