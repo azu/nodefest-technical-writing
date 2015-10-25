@@ -449,13 +449,13 @@ $ summary-to-path SUMMARY.md | xargs textlint
 
 ```js
 export default function(context){
-    let {Synxtax, report} = context;
-    return {
-      [Syntax.Link] = function (node) {
-        // Link nodeの時にこのチェック関数が呼ばれる
-        // 問題があったらcontext.report()で報告する
-      }
-    };
+  let {Synxtax, report} = context;
+  return {
+    [Syntax.Link] = function (node) {
+      // Link nodeの時にこのチェック関数が呼ばれる
+      // 問題があったらcontext.report()で報告する
+    }
+  };
 }
 ```
 
