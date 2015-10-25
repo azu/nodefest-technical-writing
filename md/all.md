@@ -496,7 +496,6 @@ export default function(context){
 - `context.report()`で報告されたエラーをフォーマッターで整形して出力
 
 
-
 -----
 
 ## texlint まとめ
@@ -635,3 +634,43 @@ textlint、ESLint、Mochaでテスト
 
 -----
 
+# おまけ: リファクタリング
+
+- ソフトウェア開発でテストを書くのは安心してリファクタリングするため
+- 文章のリファクタリングでも安心して変更できるようにしたい
+- 例えば章の順番を変更するリファクタリング
+    - いきなり説明してない単語が出てきてしまうミスが起きる
+    
+----
+
+## 文章に対して文章でテストする
+
+- 章毎の内容の概要を紹介するまえがきを作る
+- まえがきに書かれている"キーワード"が章に含まれているかをテストする
+    - その章より前の章にキーワードが含まれている場合は除外
+- 実験 [test: add keywords test by azu · Pull Request #83 · azu/JavaScript-Plugin-Architecture](https://github.com/azu/JavaScript-Plugin-Architecture/pull/83 "test: add keywords test by azu · Pull Request #83 · azu/JavaScript-Plugin-Architecture")
+
+-----
+
+## キーワードテスト
+
+![keyword center](../img/keyword-test.png)
+
+------
+
+## どうやってキーワードを取る?
+
+[azu/stemming-x-keywords](https://github.com/azu/stemming-x-keywords "azu/stemming-x-keywords")で取り出せる
+
+1. [kuromoji.js](https://github.com/takuyaa/kuromoji.js "kuromoji.js")でまえがきを形態素解析
+2. kuromojiの辞書にない単語(単語タイプ: UNKNOWN)を取り出す
+3. 未知語をキーワードとして使う
+
+------
+
+## キーワードテストの効果
+
+- そもそも、まえがきを書くモチベーションが薄い
+- まえがきは章のキーワードを上手く含めるのが目的
+- そのキーワードを使って文章でキーワードが解説されてるかをテストできる
+- まえがきを書くモチベーションに繋げる

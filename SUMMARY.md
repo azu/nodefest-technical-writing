@@ -60,3 +60,8 @@
 - [3クリックで技術書を書き始める](slide/60.md)
 	- [GitBook Starter Kit.](slide/61.md)
 	- [Usage: GitBook Starter Kit](slide/62.md)
+- [おまけ: リファクタリング](slide/63.md)
+	- [文章に対して文章でテストする](slide/64.md)
+	- [キーワードテスト](slide/65.md)
+	- [どうやってキーワードを取る?](slide/66.md)
+	- [キーワードテストの効果](slide/67.md)
