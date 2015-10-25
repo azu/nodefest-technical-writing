@@ -2,6 +2,7 @@
 .book .book-body .page-wrapper .page-inner section.normal h1 {
     font-size: 1.75em;
 }
+
 /* expand width of inner*/
 .page-inner {
     max-width: 85% !important;
@@ -21,4 +22,9 @@ img[alt *="right"] {
 img[alt *="left"] {
     float: left;
     margin-right: 1.1em;
+}
+
+img[alt *="center"] {
+    margin: 0 auto;
+    display: block;
 }

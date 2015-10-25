@@ -316,7 +316,7 @@ Pull Requestのコミット毎にプレビューが行える
 - [textlint-rule-spellcheck-tech-word](https://github.com/azu/textlint-rule-spellcheck-tech-word)
     - WEB+DB用語統一ルールベースの単語チェックするルール
 - [textlint-rule-no-start-duplicated-conjunction](https://github.com/azu/textlint-rule-no-start-duplicated-conjunction "azu/textlint-rule-no-start-duplicated-conjunction")
-    - 「しかし、〜。 しかし、〜。」など同じ接続詞が連続してないかをチェックするルール
+    - _「しかし、〜。 しかし、〜。」_ など同じ接続詞が連続してないかをチェックするルール
 - textlintのルールは以下にまとめられている
     - [Collection of textlint rule · azu/textlint Wiki](https://github.com/azu/textlint/wiki/Collection-of-textlint-rule "Collection of textlint rule · azu/textlint Wiki")
 
@@ -354,7 +354,7 @@ Pull Requestのコミット毎にプレビューが行える
 
 ![right](https://monosnap.com/file/YpmK6eo4yuu3yJSvwK8xjM9o3tjp7e.png)
 
-- 逆に穴あきでも読めることでリーダビリティをテストする手法もある
+- 逆に穴あきでも読めることでリーダービリティをテストする手法もある
 
 > 一定間隔で穴が開いた状態のテキストを読んで、ユーザーが文章の意味をくみ取れるかをチェックする為のテスト
 
@@ -409,7 +409,7 @@ rules:
 
 ## GitBook + textlint
 
-- GitBookは`SUMMARY.md`から各章の.mdへのリンクがある
+- GitBookは`SUMMARY.md`から各章のMarkdownファイルへのリンクがある
 - [azu/gitbook-summary-to-path](https://github.com/azu/gitbook-summary-to-path "azu/gitbook-summary-to-path")
 - SUMMARY.mdに書かれているファイルを`textlint`する
 
@@ -423,7 +423,7 @@ $ summary-to-path SUMMARY.md | xargs textlint
 # textlintの仕組み
 
 1. Markdown or TextをASTに変換
-2. ASTは**TxtNode**というインターフェースを持つ
+2. ASTは**TxtNode**というインタフェースを持つ
     - 例えば、`node.type`が"Header"という種類
     - `node.raw`にテキストの中身、`node.loc`に行番号等の位置
 
@@ -438,7 +438,7 @@ $ summary-to-path SUMMARY.md | xargs textlint
 
 ## AST
 
-![ast-lint, inline](../img/ast-lint.png)
+![ast-lint, center](../img/ast-lint.png)
 
 -----
 
@@ -462,24 +462,35 @@ return {
 
 - textlintとルールスクリプトの関係はpub/sub
 - ルールスクリプトはやってくるnodeだけを考えればLintを書ける
-- やってくるnodeの流れは木構造を走査する形 - [txt-ast-traverse](https://github.com/azu/txt-ast-traverse "txt-ast-traverse")
-- ルールが疎結合なので、自由にルールを追加出来る！
+- やってくるnodeの流れは木構造を走査する形 [txt-ast-traverse](https://github.com/azu/txt-ast-traverse "txt-ast-traverse")
+- ルールが疎結合なので、自由にルールを追加できる！
 
 -----
 
-## 木構造
+## 木構造のTraverse
 
-![gif visualize-txt-traverse,right, fit](http://gyazo.com/155c68f0f9ff35e0a549d655a787c01e.gif)
+[![markdown ast](../img/md-ast.png)](http://azu.github.io/markdown-to-ast/example/)
+=> 
+[![visualize-txt-traverse](../img/visualize-txt-traverse.gif)](http://azu.github.io/visualize-txt-traverse/)
 
 ----
 
 
 ## エラーの通知
 
-![result, inline](../img/lint-error.png)
+![console error, center](../img/lint-error.png)
 
 - `context.report()`で報告されたエラーをフォーマッターで整形して出力
 
 
 
 -----
+
+## texlint まとめ
+
+- 人間やIMEは表記揺れを吸収してしまう
+    - ランタイムエラーが発生しやすい
+- 静的にtextlintで文章をチェックする
+    - ランタイムエラーになる前に問題を見つける
+- チェックルールは自由に拡張できないといけない
+    - 自然言語は柔軟なのでプロジェクト毎にルールが異なる

@@ -44,5 +44,6 @@
 	- [AST](slide/44.md)
 	- [textlintのルールの仕組み](slide/45.md)
 	- [仕組みの仕組み](slide/46.md)
-	- [木構造](slide/47.md)
+	- [木構造のTraverse](slide/47.md)
 	- [エラーの通知](slide/48.md)
+	- [texlint まとめ](slide/49.md)
