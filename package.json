@@ -14,11 +14,9 @@
     "start": "npm run split && gitbook serve",
     "build": "npm run split && gitbook build",
     "split": "markdown-splitter ./md/all.md -o slide/ --summary ./SUMMARY.md",
-    "eslint": "eslint src/**/*.js",
     "eslint:md": "eslint -c .md.eslintrc --ext .md md/*.md",
     "textlint": "textlint -f pretty-error md/*.md",
-    "test:js": "mocha",
-    "test": "npm-run-all --parallel test:js textlint eslint:md eslint build"
+    "test": "npm-run-all --parallel textlint eslint:md build"
   },
   "keywords": [
     "gitbook",
@@ -37,7 +35,6 @@
     "markdown-splitter": "^1.0.1",
     "mdast": "^2.1.0",
     "mkdirp": "^0.5.1",
-    "mocha": "^2.2.5",
     "npm-run-all": "^1.0.0",
     "power-assert": "^1.0.0",
     "textlint": "^3.6.0",
