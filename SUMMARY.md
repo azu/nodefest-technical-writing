@@ -56,3 +56,7 @@
 	- [インラインコードのLint](slide/56.md)
 	- [インラインコードのLint問題](slide/57.md)
 	- [インラインコード専用のゆるいルール](slide/58.md)
+	- [サンプルコードのテストまとめ](slide/59.md)
+- [3クリックで技術書を書き始める](slide/60.md)
+	- [GitBook Starter Kit.](slide/61.md)
+	- [Usage: GitBook Starter Kit](slide/62.md)

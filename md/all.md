@@ -84,8 +84,8 @@
 
 - MarkdownからHTML/PDF/Epubへの変換
 - ファイルのincludeするMarkdown拡張
-- サンプルコードのチェック
 - Markdown/文章のチェック
+- サンプルコードのチェック
 - 使いやすいエディタ
 
 ----
@@ -94,8 +94,8 @@
 
 - **[GitBook](https://www.gitbook.com/)** - MarkdownからHTML/PDF/Epubへの変換
 - **[GitBook](https://www.gitbook.com/)** - ファイルのincludeするMarkdown拡張
-- **[ESLint](http://eslint.org/)** - サンプルコードのチェック
 - **[textlint](https://github.com/azu/textlint "textlint")** - Markdown/文章のチェック
+- **[ESLint](http://eslint.org/)** - サンプルコードのチェック
 - **好きなMarkdownエディタ** - 使いやすいエディタ
 
 ----
@@ -585,3 +585,53 @@ export default function(context){
 - インラインコード用: [.md.eslintrc](https://github.com/azu/JavaScript-Plugin-Architecture/blob/master/.md.eslintrc ".md.eslintrc")
     - `.eslintrc`を継承
     - `no-undef`や`no-unused-vars`などを無効化
+
+-----
+
+## サンプルコードのテストまとめ
+
+- サンプルコードは2種類ある
+- 外部ファイルは普通のJavaScriptと同じ手法が使える
+- Markdownの中に埋め込まれたインラインコードは特殊
+    - 一番間違いが起こりやすいのでチェックする
+- サンプルコードが嘘つく文章はよくない
+
+------
+
+# 3クリックで技術書を書き始める
+
+- 技術書を書き始めるのが大変そうに見える
+- Node.jsでアプリを書き始めるのと同じぐらい簡単に始めたい
+- そんな感じのものを作った => [GitBook Starter Kit.](https://github.com/azu/gitbook-starter-kit "GitBook Starter Kit.")
+
+-----
+
+## [GitBook Starter Kit.](https://github.com/azu/gitbook-starter-kit "GitBook Starter Kit.")
+
+```sh
+git clone https://github.com/azu/gitbook-starter-kit.git your-book-name
+cd your-book-name
+npm install
+```
+
+これだけで今日話した内容で技術文書を書き始めることができる！
+
+
+-----
+
+## Usage: GitBook Starter Kit
+
+```
+npm start
+```
+
+でプレビュー
+
+```
+npm test
+```
+
+textlint、ESLint、Mochaでテスト
+
+-----
+
