@@ -658,12 +658,12 @@ textlint、ESLint、Mochaでテスト
 
 ------
 
-## どうやってキーワードを取る?
+## どうやってキーワードを取る？
 
 [azu/stemming-x-keywords](https://github.com/azu/stemming-x-keywords "azu/stemming-x-keywords")で取り出せる
 
 1. [kuromoji.js](https://github.com/takuyaa/kuromoji.js "kuromoji.js")でまえがきを形態素解析
-2. kuromojiの辞書にない単語(単語タイプ: UNKNOWN)を取り出す
+2. kuromojiの辞書にない単語(単語タイプ: UNKNOWN)を取りだす
 3. 未知語をキーワードとして使う
 
 ------
@@ -674,3 +674,78 @@ textlint、ESLint、Mochaでテスト
 - まえがきは章のキーワードを上手く含めるのが目的
 - そのキーワードを使って文章でキーワードが解説されてるかをテストできる
 - まえがきを書くモチベーションに繋げる
+
+----
+
+# CI
+
+----
+
+## 文書を継続的開発する
+
+- ソフトウェアならCIを回すのは基本
+- 技術文書の開発でもCIを回すのが基本
+- e.g.) [JavaScript Plugin Architecture](https://github.com/azu/JavaScript-Plugin-Architecture "JavaScript Plugin Architecture")
+    - Mocha(サンプルコード)、textlint、ESLint、GitBookのビルドのテスト
+
+----
+
+# Issue/Pull Request駆動
+
+![center, pulse](../img/pulse.png)
+
+----
+
+## Pull Request
+
+- Pull Request駆動で文章もCIを通してから
+    - [検証済みマージ](http://d.hatena.ne.jp/kkawa/20120604/p1 "検証済みマージ")
+    - マージされるとgitbook.comへデプロイされる
+
+----
+
+## Lint結果をレビューコメントで通知
+
+![レビューコメント](../img/review-comment.png)
+
+- [jser/jser.github.ioの記事をpull request時にLintする仕組み | Web Scratch](http://efcl.info/2015/03/04/linting-article/ "jser/jser.github.ioの記事をpull request時にLintする仕組み | Web Scratch")
+
+-----
+
+## Issue/Pull Request駆動
+
+- 文章の正しさは人により異なるので根拠を残す
+    - 自然言語は曖昧になりやすいのでなぜを残す
+    - 文章の自動チェックを入れた理由を残す
+
+-----
+
+## Issueにメモを書く
+
+- Issueで設計をしてから文章を書く
+- 気になったことはとりあえずIssueとしてメモ書き
+- 参考リンクとかをコメントにどんどん書いていく
+- ちょっとづつ進められるようにタスクをIssueとして細分化
+    - => 飽きやすいのを防止するため
+
+-----
+
+## 書き始めてない = 書いてない
+
+- 文書を書くのは最初の一歩が重たい
+- 最初に書くのは本文じゃなくても良い
+- Issueに使いたいフレーズだけ書いておくのも良い
+
+-----
+
+# ブログを書く
+
+----
+
+## ブログ
+
+- 書きやすい
+- 一日で完結する
+
+
+-----
