@@ -14,17 +14,21 @@ Deckset like notation
 ![right](img.png)
 ![left](img.png)
 */
-img[alt *="right"] {
+.book .book-body .page-wrapper .page-inner section.normal img[alt *="right"] {
     float: right;
     margin-left: 1.1em;
+    /* max image width */
+    max-width: 55%;
 }
 
-img[alt *="left"] {
+.book .book-body .page-wrapper .page-inner section.normal img[alt *="left"] {
     float: left;
     margin-right: 1.1em;
+    /* max image width */
+    max-width: 55%;
 }
 
-img[alt *="center"] {
+.book .book-body .page-wrapper .page-inner section.normal img[alt *="center"] {
     margin: 0 auto;
     display: block;
 }
