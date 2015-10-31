@@ -43,5 +43,7 @@
     "textlint-rule-no-start-duplicated-conjunction": "^1.0.3",
     "textlint-rule-prh": "^1.0.1",
     "textlint-rule-spellcheck-tech-word": "^4.0.1"
+  },
+  "dependencies": {
   }
 }

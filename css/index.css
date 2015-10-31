@@ -3,6 +3,11 @@
     font-size: 1.75em;
 }
 
+.book .book-body .page-wrapper .page-inner section.normal h1:only-child {
+    font-size: 4em;
+    text-align: center;
+    padding: 1em 0;
+}
 /* expand width of inner*/
 .page-inner {
     max-width: 85% !important;
