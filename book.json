@@ -7,7 +7,7 @@
     "website": "css/index.css"
   },
   "plugins": [
-    "-fontsettings",
+    "fontsettings",
     "japanese-support"
   ],
   "pluginsConfig": {
