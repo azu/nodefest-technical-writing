@@ -8,6 +8,12 @@
     text-align: center;
     padding: 1em 0;
 }
+
+/**/
+.book .book-body .page-wrapper .page-inner section.normal h1, .book .book-body .page-wrapper .page-inner section.normal h2, .book .book-body .page-wrapper .page-inner section.normal h3, .book .book-body .page-wrapper .page-inner section.normal h4, .book .book-body .page-wrapper .page-inner section.normal h5, .book .book-body .page-wrapper .page-inner section.normal h6 {
+    margin-bottom: 0.1em;
+}
+
 /* expand width of inner*/
 .page-inner {
     max-width: 85% !important;
@@ -31,6 +37,13 @@ Deckset like notation
     margin-right: 1.1em;
     /* max image width */
     max-width: 55%;
+}
+
+/* img[left] img[right*/
+.book .book-body .page-wrapper .page-inner section.normal img[alt *="left"] + img[alt *="right"] {
+    box-sizing: border-box;
+    margin-left: 0;
+    max-width: 40%;
 }
 
 .book .book-body .page-wrapper .page-inner section.normal img[alt *="center"] {

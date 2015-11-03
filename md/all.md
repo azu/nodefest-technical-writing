@@ -1,9 +1,3 @@
-# 技術文書をソフトウェア開発する話
-
-技術文書の自動テスト、開発プロセスについて
-
-----
-
 # 自己紹介
 
 ![アイコン, left](https://github.com/azu.png)
@@ -20,52 +14,36 @@
 # 目的
 
 - 技術文書を書くのはもっと身近ものとなっている事を知る
-- ブログの延長線上としてのステップ
+- ブログ以上、技術書以下の文書を書くための構造を知る
 - 技術文書をテストする
 
 ----
 
-# Why techinical writing?
+# なぜ技術文書？
 
-- 文章だと小説とかも含まれてるのでやり方が異なりそう
+- "文書"だと小説とかも含まれてるのでやり方が異なりそう
 - 技術文書だとセマンティックがはっきりしてるのでとりかかりやすい
-    - 「技術書の英語は読みやすい」とかそういうのに近い
+    - 「技術書の英語は読みやすい」
 - なのでまずは身近な技術文書からやりましょう
 
 ----
 
 # アジェンダ
 
-- 技術書を書くモチベーション
-    - ブログは書くけど技術書みたいな長いものは書けない
-    - 途中で放置された文章
-    - 完成が見えずに放置されたソフトウェア
-    - とりあえず動くようにして進めていく
-    - リアクションが欲しい
-    - CIにリアクションして怒られるようにする
-- 3クリックで電子書籍を書き始める
-- 技術文書のサンプルコードのテスト
+- 技術書を書く環境
+- 技術文書のコードと文書のテスト
 - textlintについて
-- プロジェクトごとに表記揺れのルールを設ける必要性
-- 文章に対するCI
+- 表記揺れのルールを設ける必要性
+- 技術文書の開発とCI
 - 決してバグ(typo)は無くならない
 
 -----
 
-# 今日扱う「技術文書」の対象
-
-- 技術文書
-    - [x] 技術書
-    - [x] ブログ
-    - [x] スライド
-    - [ ] マニュアル
-    - [ ] 論文
-    
----- 
-
 # 技術書
 
 どのようなツールを使って技術書を開発できるか
+
+----
 
 ## [JavaScript Plugin Architecture](https://github.com/azu/JavaScript-Plugin-Architecture "JavaScript Plugin Architecture")
 
@@ -110,10 +88,10 @@
 
 - Markdown/AsciiDocで電子書籍を書けるツール/プラットフォーム
 - [GitbookIO/gitbook](https://github.com/GitbookIO/gitbook "GitbookIO/gitbook")
-    - MarkdownからHTML/PDF/Epub/mobiへの変換
-    - 各章を書いて`SUMMARY.md`にリンクを書くだけできる
+    - MarkdownからHTML/PDF/Epub/mobiへ変換
+    - 各章を書いて`SUMMARY.md`にリンクを書くだけ
     - プラグインで拡張が可能
-- GitHub Pagesでも公開は簡単
+- ただのHTMLを吐くのでGitHub Pagesでも公開は簡単
 
 -----
 
@@ -121,9 +99,22 @@
 
 - GitBookの公開プラットフォーム
 - HTML/PDF/Epubの自動生成、コミット毎プレビュー、販売/寄付、Organization、アップデート通知、オンラインエディタ
-- GitHubとDeployment APIでhookして自動的に反映できる
+- GitHubとDeployment APIでhookして自動的に反映
     - Pull Requestのコミット毎にプレビューできる
     
+-----
+
+## 初めてのGitBook
+
+これだけでとりあえず電子書籍サイトができる
+
+```
+npm i -g gitbook-cli
+touch README.md
+touch SUMMARY.md
+gitbook serve
+```
+
 -----
 
 ## GitBookの構造
@@ -132,7 +123,7 @@
 
 ```
 ├── README.md
-├── Chapters(各章)
+├── Contents
 │   ├── jquery.md
 │   └── ESLint.md
 ├── SUMMARY.md
@@ -146,7 +137,7 @@
 
 ## SUMMARY.md
 
-- `SUMMARY.md`には各章へのリンクを貼る
+- `SUMMARY.md`だけが必須
 - `SUMMARY.md`は目次ファイル
 
 ```
@@ -163,19 +154,20 @@
 
 ```
 npm install -g gitbook-cli
-gitbook serve
-# open http://localhost:4000
-gitbook build
-# _books/にHTMLが吐き出される
+gitbook serve # 簡易サーバでプレビュー
 gitbook pdf|epub|mobi
 # pdf epub mobiの出力
 ```
 
 ---
 
-## gitbook.comとの連携
+## [gitbook.com](https://www.gitbook.com)との連携
 
-![gitbook integration](../img/gitbook-integration.jpg)
+- GitHubのリポジトリと紐付けできる
+- コミットするごとのGitBookでビルドしてくれる
+    - GitBookのビルドしてくれるCI
+    - HTML/PDF/Epub/Mobi/JSONを出力
+- そのまま公開プラットフォームとしても使える
 
 ----
 
@@ -183,14 +175,13 @@ gitbook pdf|epub|mobi
 
 ![pullrequest](../img/gitbook-pullrequst.jpg)
 
-Pull Requestのコミット毎にプレビューが行える
+![build](../img/gitbook-build.jpg)
 
 ----
 
 ## gitbook.comとの連携機能
 
-- コミット毎にプレビューできる！
-    - Pull Requestに対してもプレビューが生成される
+- Pull Requestのコミット毎にプレビュー
     - すぐ確認できるのでレビューにとても便利
     - ローカルに開発環境を持ってなくても編集ができる
 - 自動でHTML/PDF/epub/mobiが生成される
@@ -203,7 +194,7 @@ Pull Requestのコミット毎にプレビューが行える
 - Markdown/AsciiDocで文章を書ける
 - `SUMMARY.md`に目次を書く
 - `gitbook build`で電子書籍が出来上がる
-- 必要なものがnpm一発で手に入る
+- 必要なものが `npm install` 一発で手に入る
 - シンプルな構造なので拡張しやすい
 
 ----
@@ -217,7 +208,11 @@ Pull Requestのコミット毎にプレビューが行える
 
 -----
 
-# ソフトウェア開発で継続的に開発する場合
+# 技術書の継続的開発
+
+-----
+
+# ソフトウェア開発で継続的に開発
 
 - Lintを使ってコードをチェックする
 - テストを書いてCIを回す
