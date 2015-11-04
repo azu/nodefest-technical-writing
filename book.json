@@ -4,7 +4,7 @@
   "title": "技術文書をソフトウェア開発する話",
   "description": "技術文書をソフトウェア開発のように書くためのツールや方法",
   "structure": {
-    "readme": "intro.md"
+    "readme": "TITLE.md"
   },
   "styles": {
     "website": "css/index.css"

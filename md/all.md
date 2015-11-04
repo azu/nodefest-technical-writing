@@ -201,14 +201,14 @@ gitbook pdf|epub|mobi
 
 # 技術書を書く環境はできたが…
 
-- 技術書は一日で終わらない
+- 技術書は一日で書き終わらない
     - ブログよりサイズが大きい
 - 途中で飽きてしまう問題
 - 継続的に書いていくにはどうするか？
 
 -----
 
-# 技術書の継続的開発
+# 文書の継続的開発
 
 -----
 
@@ -218,10 +218,18 @@ gitbook pdf|epub|mobi
 - テストを書いてCIを回す
 - Issue/Pull Requestで少しづつ実装する
     - コードレビューを行う
-- 文章においても同じことができれば継続的に書けるのでは？
+    - なぜこうなったのかの経緯を残す
+- 文書においても同じことができれば継続的に書けるのでは？
 
-モチベーションが最も大事ではあるけど、自然言語とプログラミング言語で環境的な差がある
-    
+-----
+
+# 文書をソフトウェア開発
+
+- モチベーションが最も大事
+- しかし、自然言語とプログラミング言語で環境的な差がある
+    - ツールの問題が多い
+- まずはそれを埋める
+
 -----
 
 # 文章は動的型付け言語
@@ -230,6 +238,7 @@ gitbook pdf|epub|mobi
     - コンパイルエラーじゃなくてランタイムエラー
 - コンテキストによって意味解釈が変わる
 - 規則性はあるが例外も多い
+- ランタイムエラー(誤字、脱字)が発生する
     
 ----
 
@@ -264,9 +273,7 @@ gitbook pdf|epub|mobi
 - 自然言語にスタンダードなルールはない
     - JSHintのように1つの固まりとして提供するのは難しい
 - ルールはPlugableに拡張できないといけない
-    - ESLintのようにルール毎に実装が分かれている必要がある
-    - 利用者がどのルールを使うかを決める事ができる
-    - 利用者がルールを自由に追加できる
+    - ESLintのように利用者が自由に拡張可能である必要
 - そのために[textlint](https://github.com/azu/textlint "textlint")を作った
 
 -----
@@ -282,8 +289,7 @@ gitbook pdf|epub|mobi
 
 ## ルールの紹介
 
-[textlint](https://github.com/azu/textlint "textlint")のルール紹介
-
+![center](../img/textlint-output.png)
 
 ----
 
@@ -298,7 +304,7 @@ gitbook pdf|epub|mobi
 ## 技術書は一朝一夕で作れない
 
 - 技術書の場合一日で書き終わらない
-- 日によって敬体(ですます調)だったり、常体(である調)だったりする
+- 日によって敬体(ですます調)、常体(である調)が違う問題
     - 昨日は敬体で、今日は常体だったり…
 - 敬体(ですます調)と常体(である調)の統一を自動的にチェックする
 
@@ -310,6 +316,11 @@ gitbook pdf|epub|mobi
     - 一文に利用できる`、`の数をチェックするルール
 - [textlint-rule-spellcheck-tech-word](https://github.com/azu/textlint-rule-spellcheck-tech-word)
     - WEB+DB用語統一ルールベースの単語チェックするルール
+    
+----
+
+## textlintのルール2
+
 - [textlint-rule-no-start-duplicated-conjunction](https://github.com/azu/textlint-rule-no-start-duplicated-conjunction "azu/textlint-rule-no-start-duplicated-conjunction")
     - _「しかし、〜。 しかし、〜。」_ など同じ接続詞が連続してないかをチェックするルール
 - textlintのルールは以下にまとめられている
@@ -317,17 +328,26 @@ gitbook pdf|epub|mobi
 
 ----
 
-## JTFスタイルガイド
+## [JTF日本語標準スタイルガイド](https://www.jtf.jp/jp/style_guide/styleguide_top.html "JTF日本語標準スタイルガイド（翻訳用）")
 
 ![right chara](../img/jtf_chara.gif)
 
 - [textlint-plugin-JTF-style](https://github.com/azu/textlint-plugin-JTF-style "textlint-plugin-JTF-style")
-- [JTF日本語標準スタイルガイド（翻訳用）](https://www.jtf.jp/jp/style_guide/styleguide_top.html "JTF日本語標準スタイルガイド（翻訳用）")でチェックできるtextlintルールセット
-    - 40種類ぐらいのルールでチェックできる
-    - もちろん個別に無効化できる
-- 技術文書は元々英語圏の技術についてが多いのでマッチするツールも多い
+- JTFスタイルでチェックできるtextlintルールセット
+- 40種類のルールでチェックできる
+- 気に入らないものは個別に無効化できる
 
 -----
+
+### JTF日本語標準スタイルガイド
+
+
+> JTFスタイルガイドの第一の目的は、和訳時の日本語表記を統一するためのガイドラインとなることです。
+> -- [標準スタイルガイド検討委員会｜JTF　日本翻訳連盟](https://www.jtf.jp/jp/style_guide/styleguide_top.html "標準スタイルガイド検討委員会｜JTF　日本翻訳連盟")
+
+- 技術文書は元々英語圏の技術が多いのでマッチするルールが多い  
+
+------
 
 # 表記揺れ
 
@@ -345,7 +365,7 @@ gitbook pdf|epub|mobi
 
 -----
 
-### クローズドテスト
+### クローズテスト
 
 ![right](https://monosnap.com/file/YpmK6eo4yuu3yJSvwK8xjM9o3tjp7e.png)
 
@@ -370,8 +390,8 @@ gitbook pdf|epub|mobi
 ## プロジェクト固有の表記揺れ
 
 - 表記揺れのチェックに汎用的な辞書/ルールはない
-    - 全ての表現が一意ならそもそも表記揺れなんて起きない
-    - 技術文書の中で一貫した表現を保証するためのもの
+- 全ての表現が一意ならそもそも表記揺れなんて起きない
+- その文書の中で一貫した表現を保証するためのもの
 - プロジェクト固有のルールで表記揺れのチェックが必要
 
 -----
@@ -380,9 +400,14 @@ gitbook pdf|epub|mobi
 
 
 - [vvakame/prh](https://github.com/vvakame/prh "vvakame/prh") を使ったtextlintルール
-- ymlでルールを簡単に追加できる(正規表現や大文字小文字などよくある表記揺れは簡単に書ける仕組みがある)
+- ymlでルールを簡単に追加できる
+- 正規表現や大文字小文字統一などの表記揺れは簡単に書ける仕組み
 
-```
+----
+
+### prh
+
+```yml
 rules:
   - expected: タスク自動化ツール
     patterns:
@@ -393,9 +418,9 @@ rules:
 
 -----
 
-## なぜプロジェクト毎に表記揺れルール？
+## なぜプロジェクト固有？
 
-- 表記揺れを見つけた時にルールを追加して**から**修正
+- ルールを追加して**から**表記揺れを修正
     - [connet => **C**onnectに統一 · Issue #48 · azu/JavaScript-Plugin-Architecture](https://github.com/azu/JavaScript-Plugin-Architecture/issues/48 "**C**onnectに統一しよう · Issue #48 · azu/JavaScript-Plugin-Architecture")
     - リグレッションテストと同じ意味合い
 - 表記がルールとして明文化できるので[Contribute](https://github.com/azu/JavaScript-Plugin-Architecture/blob/master/CONTRIBUTING.md "Contribute")しやすい
@@ -572,12 +597,12 @@ export default function(context){
 
 ----
 
-## インラインコード専用のゆるいルール
+## インラインコード専用のルール
 
 - 設定ファイルを分けることで解決！
 - 通常のコード用: [.eslintrc](https://github.com/azu/JavaScript-Plugin-Architecture/blob/master/.eslintrc ".eslintrc")
 - インラインコード用: [.md.eslintrc](https://github.com/azu/JavaScript-Plugin-Architecture/blob/master/.md.eslintrc ".md.eslintrc")
-    - `.eslintrc`を継承
+    - `.eslintrc`を継承して一部ルールを緩和
     - `no-undef`や`no-unused-vars`などを無効化
 
 -----
@@ -592,9 +617,9 @@ export default function(context){
 
 ------
 
-# 3クリックで技術書を書き始める
+# 3ステップで技術書を書き始める
 
-- 技術書を書き始めるのが大変そうに見える
+- 技術書を書き始めるのが大変そう
 - Node.jsでアプリを書き始めるのと同じぐらい簡単に始めたい
 - そんな感じのものを作った => [GitBook Starter Kit.](https://github.com/azu/gitbook-starter-kit "GitBook Starter Kit.")
 
