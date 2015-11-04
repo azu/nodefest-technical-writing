@@ -44,7 +44,7 @@
 		- [prh](slide/44.md)
 	- [なぜプロジェクト固有？](slide/45.md)
 	- [GitBook + textlint](slide/46.md)
-- [Atom + linter-textlint](slide/47.md)
+	- [Atom + linter-textlint](slide/47.md)
 - [textlintの仕組み](slide/48.md)
 	- [Markdown -> AST](slide/49.md)
 	- [AST](slide/50.md)

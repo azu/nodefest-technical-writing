@@ -440,7 +440,7 @@ $ summary-to-path SUMMARY.md | xargs textlint
 
 -----
 
-# Atom + [linter-textlint](https://github.com/1000ch/linter-textlint "1000ch/linter-textlint")
+## Atom + [linter-textlint](https://github.com/1000ch/linter-textlint "1000ch/linter-textlint")
 
 > [textlintのAtomプラグイン - 1000ch.net](https://1000ch.net/posts/2015/linter-textlint.html "textlintのAtomプラグイン - 1000ch.net")
 
@@ -734,6 +734,7 @@ textlint、ESLint、Mochaでテスト
 
 ## Issue/Pull Request駆動
 
+- モチベーションの維持
 - 文章の正しさは人により異なるので根拠を残す
     - 自然言語は曖昧になりやすいのでなぜを残す
     - 文章の自動チェックを入れた理由を残す
@@ -785,3 +786,20 @@ textlint、ESLint、Mochaでテスト
 - 校正支援はルールベース
     - textlint
 - 推敲支援はビジュアライズベース
+
+-----
+
+# まとめ
+
+- ユニットテスト = 校正
+- CI = CI
+- インテグレーションテスト = 目視?
+
+
+-----
+
+## まとめ
+
+- 文書に対するチェックの自動がまだ手軽ではない
+- textlintとか作って、文字列操作と正規表現でもかなりのことができる
+- コードも文書も増やすのは簡単なので、減らすための技術がもっと必要
