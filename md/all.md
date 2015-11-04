@@ -774,27 +774,54 @@ textlint、ESLint、Mochaでテスト
 
 # 校正 ≠ 品質
 
-- 校正は品質を良くするために行うものではない
-- 自動校正 = ユニットテスト
+- 校正は品質を良くするためのものではない
 - ユニットテストは品質のためではない
+- 自動校正 = ユニットテスト
     - バグを見つけたり、再発防止が目的
 
 -----
 
 ## 校正と推敲
 
-- 校正支援はルールベース
-    - textlint
-- 推敲支援はビジュアライズベース
+- 校正は誤字脱字などの修正
+- 推敲は文章構造のリファクタリング
 
 -----
+
+## 校正支援と推敲支援
+
+- 校正支援はルールベース
+    - textlint、RedPen、Just Right!
+- 推敲支援はビジュアライズベース
+    - いい感じの知らない
+
+------
+
+## 推敲するにはまず文書構造の把握
+
+- リファクタリングするにはまず構造が分からないと難しい
+    - リファクタリングするにしても指標とする値がない
+- 文書の情報を一覧する[textstat](https://github.com/azu/textstat "textstat")を作った
+- 文書の文字数とかパラグラフの数、読みやすさなどを数値で出すツール
+
+------
+
+## [textstat](https://github.com/azu/textstat "textstat")
+
+![textstat, right](../img/textstat.jpg)
+
+- Wordの文字カウントっぽい機能
+- [日本文の読みやすさの評価式](https://ipsj.ixsq.nii.ac.jp/ej/?action=pages_view_main&active_action=repository_view_main_item_detail&item_id=37773&item_no=1&page_id=13&block_id=8 "日本文の読みやすさの評価式")の値
+- textlintをモジュールとして使い実装
+- textlintと同様にJavaScriptでルールを書ける
+
+------
 
 # まとめ
 
 - ユニットテスト = 校正
 - CI = CI
-- インテグレーションテスト = 目視?
-
+- インテグレーションテスト = 目視？
 
 -----
 

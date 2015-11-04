@@ -82,3 +82,8 @@
 	- [ブログ](slide/82.md)
 - [校正 ≠ 品質](slide/83.md)
 	- [校正と推敲](slide/84.md)
+	- [校正支援と推敲支援](slide/85.md)
+	- [推敲するにはまず文書構造の把握](slide/86.md)
+	- [textstat](slide/87.md)
+- [まとめ](slide/88.md)
+	- [まとめ](slide/89.md)
