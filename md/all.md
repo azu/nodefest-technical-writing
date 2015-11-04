@@ -617,6 +617,28 @@ export default function(context){
 
 ------
 
+# CI
+
+----
+
+## 文書を継続的開発する
+
+- ソフトウェアならCIを回すのは基本
+- 技術文書の開発でもCIを回すのが基本
+- e.g.) [JavaScript Plugin Architecture](https://github.com/azu/JavaScript-Plugin-Architecture "JavaScript Plugin Architecture")
+    - Mocha(サンプルコード)、textlint、ESLint、GitBookのビルドのテスト
+
+----
+
+## CIで継続的開発
+
+- ここまででてきたツールは全部Node.jsで動く
+- `npm test`で以下をテストすればいいだけ
+    - `gitbook build`、`eslint`、`textlint`、`mocha`
+- 普通のソフトウェア開発と何も変わらない
+
+-----
+
 # 3ステップで技術書を書き始める
 
 - 技術書を書き始めるのが大変そう
@@ -634,7 +656,6 @@ npm install
 ```
 
 これだけで今日話した内容で技術文書を書き始めることができる！
-
 
 -----
 
@@ -697,19 +718,6 @@ textlint、ESLint、Mochaでテスト
 
 ----
 
-# CI
-
-----
-
-## 文書を継続的開発する
-
-- ソフトウェアならCIを回すのは基本
-- 技術文書の開発でもCIを回すのが基本
-- e.g.) [JavaScript Plugin Architecture](https://github.com/azu/JavaScript-Plugin-Architecture "JavaScript Plugin Architecture")
-    - Mocha(サンプルコード)、textlint、ESLint、GitBookのビルドのテスト
-
-----
-
 # Issue/Pull Request駆動
 
 ![center, pulse](../img/pulse.png)
@@ -720,7 +728,9 @@ textlint、ESLint、Mochaでテスト
 
 - Pull Request駆動で文章もCIを通してから
     - [検証済みマージ](http://d.hatena.ne.jp/kkawa/20120604/p1 "検証済みマージ")
-    - マージされるとgitbook.comへデプロイされる
+    - テストが通ったコミットのみをmasterへマージする
+    - 細かい誤字とかはマージする前に見直せる
+- マージされるとgitbook.comへデプロイされる
 
 ----
 
@@ -737,7 +747,7 @@ textlint、ESLint、Mochaでテスト
 - モチベーションの維持
 - 文章の正しさは人により異なるので根拠を残す
     - 自然言語は曖昧になりやすいのでなぜを残す
-    - 文章の自動チェックを入れた理由を残す
+    - 表記揺れのルールを入れた理由を残す
 
 -----
 
@@ -758,19 +768,6 @@ textlint、ESLint、Mochaでテスト
 - Issueに使いたいフレーズだけ書いておくのも良い
 
 -----
-
-# ブログを書く
-
-----
-
-## ブログ
-
-- 書きやすい
-- 一日で完結する
-
-
------
-
 
 # 校正 ≠ 品質
 
