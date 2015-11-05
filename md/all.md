@@ -19,12 +19,21 @@
 
 ----
 
-# なぜ技術文書？
+## なぜ技術文書？
 
 - "文書"だと小説とかも含まれてるのでやり方が異なりそう
 - 技術文書だとセマンティックがはっきりしてるのでとりかかりやすい
     - 「技術書の英語は読みやすい」
 - なのでまずは身近な技術文書からやりましょう
+
+----
+
+## ブログ以上、技術書以下
+
+- ブログはサイズ的にも書きやすい
+- ブログより大きなサイズのものを書く時にどうすればいいのかわからない
+    - 技術書、ライブラリのAPIドキュメントなど
+- スケールしてメンテナンス可能な技術文書を書くためのツールや開発手法
 
 ----
 
@@ -58,21 +67,21 @@
 
 ----
 
-## 技術書に必要な要素(Q)
+## 技術書に欲しい要素(Q)
 
 - MarkdownからHTML/PDF/Epubへの変換
 - ファイルのincludeするMarkdown拡張
-- Markdown/文章のチェック
+- 文章のチェック
 - サンプルコードのチェック
 - 使いやすいエディタ
 
 ----
 
-## 技術書に必要な要素(A)
+## 技術書に欲しい要素(A)
 
 - **[GitBook](https://www.gitbook.com/)** - MarkdownからHTML/PDF/Epubへの変換
 - **[GitBook](https://www.gitbook.com/)** - ファイルのincludeするMarkdown拡張
-- **[textlint](https://github.com/azu/textlint "textlint")** - Markdown/文章のチェック
+- **[textlint](https://github.com/azu/textlint "textlint")** - 文章のチェック
 - **[ESLint](http://eslint.org/)** - サンプルコードのチェック
 - **好きなMarkdownエディタ** - 使いやすいエディタ
 
@@ -86,10 +95,10 @@
 
 ## What is [GitBook](https://www.gitbook.com/)
 
-- Markdown/AsciiDocで電子書籍を書けるツール/プラットフォーム
+- Markdown/AsciiDocで電子書籍を書けるNode.js製ツール/プラットフォーム
 - [GitbookIO/gitbook](https://github.com/GitbookIO/gitbook "GitbookIO/gitbook")
     - MarkdownからHTML/PDF/Epub/mobiへ変換
-    - 各章を書いて`SUMMARY.md`にリンクを書くだけ
+    - 余計な設定なしにファイルを置くだけで書き始められる
     - プラグインで拡張が可能
 - ただのHTMLを吐くのでGitHub Pagesでも公開は簡単
 
@@ -98,15 +107,24 @@
 ## [gitbook.com](https://www.gitbook.com)
 
 - GitBookの公開プラットフォーム
-- HTML/PDF/Epubの自動生成、コミット毎プレビュー、販売/寄付、Organization、アップデート通知、オンラインエディタ
+- HTML/PDF/Epub/mobiの自動生成、コミット毎プレビュー、販売/寄付、Organization、アップデート通知、オンラインエディタ、Issue
 - GitHubとDeployment APIでhookして自動的に反映
     - Pull Requestのコミット毎にプレビューできる
     
 -----
 
+## GitBookはどんなところで使われてる？
+
+- APIリファレンス
+    - [Redux](http://redux.js.org/)
+- 技術書
+    - [Front-end Handbook - GitBook](https://www.gitbook.com/book/frontendmasters/front-end-handbook/details "Front-end Handbook - GitBook")
+
+-----
+
 ## 初めてのGitBook
 
-これだけでとりあえず電子書籍サイトができる
+これだけでとりあえず電子書籍ができる
 
 ```
 npm i -g gitbook-cli
@@ -138,7 +156,7 @@ gitbook serve
 ## SUMMARY.md
 
 - `SUMMARY.md`だけが必須
-- `SUMMARY.md`は目次ファイル
+- `SUMMARY.md`は目次ファイル(リンクを貼るだけ)
 
 ```
 - [jQuery](chapters/jquery.md)
@@ -204,6 +222,7 @@ gitbook pdf|epub|mobi
 - 技術書は一日で書き終わらない
     - ブログよりサイズが大きい
 - 途中で飽きてしまう問題
+    - モチベーションの問題もあるが構造的な問題
 - 継続的に書いていくにはどうするか？
 
 -----
@@ -212,11 +231,11 @@ gitbook pdf|epub|mobi
 
 -----
 
-# ソフトウェア開発で継続的に開発
+# ソフトウェア開発での継続的開発
 
 - Lintを使ってコードをチェックする
 - テストを書いてCIを回す
-- Issue/Pull Requestで少しづつ実装する
+- Issue/Pull Requestで小さな単位で実装する
     - コードレビューを行う
     - なぜこうなったのかの経緯を残す
 - 文書においても同じことができれば継続的に書けるのでは？
@@ -268,7 +287,7 @@ gitbook pdf|epub|mobi
 
 ------
 
-## 自然言語のLintは拡張可能
+## 自然言語のLintは柔軟性が必須
 
 - 自然言語にスタンダードなルールはない
     - JSHintのように1つの固まりとして提供するのは難しい
@@ -280,7 +299,8 @@ gitbook pdf|epub|mobi
 
 # [textlint](https://github.com/azu/textlint "textlint")
 
-- Markdownなどのテキストファイルを扱うLintツール
+- Markdown/HTML/txtに対応したLintツール
+    - 構文をパースしたASTでLintするので誤検知しない
 - デフォルトのルールはない
 - ESLintと同じくPlugableにルールを追加することができる
 - JavaScriptでルールを簡単に書くことができる
@@ -367,9 +387,9 @@ gitbook pdf|epub|mobi
 
 ### クローズテスト
 
-![right](https://monosnap.com/file/YpmK6eo4yuu3yJSvwK8xjM9o3tjp7e.png)
+![right](../img/closetest.png)
 
-- 逆に穴あきでも読めることでリーダービリティをテストする手法もある
+- 逆に穴あきでも読めることでリーダービリティをテストする手法ぐらい
 
 > 一定間隔で穴が開いた状態のテキストを読んで、ユーザーが文章の意味をくみ取れるかをチェックする為のテスト
 
@@ -392,7 +412,7 @@ gitbook pdf|epub|mobi
 - 表記揺れのチェックに汎用的な辞書/ルールはない
 - 全ての表現が一意ならそもそも表記揺れなんて起きない
 - その文書の中で一貫した表現を保証するためのもの
-- プロジェクト固有のルールで表記揺れのチェックが必要
+- => プロジェクト固有のルールで表記揺れのチェックが必要
 
 -----
 
@@ -529,7 +549,11 @@ export default function(context){
     
 ----
 
-# サンプルコードのテスト
+# サンプルコード
+
+----
+
+## サンプルコードのテスト
 
 ![example-code.png](../img/example-code.png)
 
@@ -552,7 +576,7 @@ export default function(context){
 
 ----
 
-## GitBookと外部ファイル
+## GitBookで外部ファイルの読み込み
 
 - [azu/gitbook-plugin-include-codeblock](https://github.com/azu/gitbook-plugin-include-codeblock "azu/gitbook-plugin-include-codeblock")
 - いい感じに外部ファイルを`CodeBlock`として読み込むGitBookプラグイン
@@ -630,11 +654,12 @@ export default function(context){
 
 ----
 
-## CIで継続的開発
+## CIでテスト
 
 - ここまででてきたツールは全部Node.jsで動く
 - `npm test`で以下をテストすればいいだけ
     - `gitbook build`、`eslint`、`textlint`、`mocha`
+- これをTravis CIなど好きなCIで回せばいいだけ
 - 普通のソフトウェア開発と何も変わらない
 
 -----
