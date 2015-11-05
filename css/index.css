@@ -9,6 +9,12 @@
     padding: 1em 0;
 }
 
+.book .book-body .page-wrapper .page-inner section.normal h2:only-child {
+    font-size: 3em;
+    text-align: center;
+    padding: 1em 0;
+}
+
 /**/
 .book .book-body .page-wrapper .page-inner section.normal h1, .book .book-body .page-wrapper .page-inner section.normal h2, .book .book-body .page-wrapper .page-inner section.normal h3, .book .book-body .page-wrapper .page-inner section.normal h4, .book .book-body .page-wrapper .page-inner section.normal h5, .book .book-body .page-wrapper .page-inner section.normal h6 {
     margin-bottom: 0.1em;

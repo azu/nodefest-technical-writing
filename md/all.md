@@ -22,7 +22,7 @@
 ## なぜ技術文書？
 
 - "文書"だと小説とかも含まれてるのでやり方が異なりそう
-- 技術文書だとセマンティックがはっきりしてるのでとりかかりやすい
+- 技術文書だと他よりセマンティックがはっきりしてる
     - 「技術書の英語は読みやすい」
 - なのでまずは身近な技術文書からやりましょう
 
@@ -30,10 +30,10 @@
 
 ## ブログ以上、技術書以下
 
-- ブログはサイズ的にも書きやすい
+- ブログはサイズ的にも書きやすい(1日で完結)
 - ブログより大きなサイズのものを書く時にどうすればいいのかわからない
     - 技術書、ライブラリのAPIドキュメントなど
-- スケールしてメンテナンス可能な技術文書を書くためのツールや開発手法
+- 大きくなってもメンテナンス可能な技術文書を書くためのツールや開発手法について
 
 ----
 
@@ -44,7 +44,8 @@
 - textlintについて
 - 表記揺れのルールを設ける必要性
 - 技術文書の開発とCI
-- 決してバグ(typo)は無くならない
+- 何事も計測してから
+- リファクタリングと推敲
 
 -----
 
@@ -55,6 +56,8 @@
 ----
 
 ## [JavaScript Plugin Architecture](https://github.com/azu/JavaScript-Plugin-Architecture "JavaScript Plugin Architecture")
+
+![javascript-plugin-architecure.jpg](../img/javascript-plugin-architecure.jpg)
 
 ----
 
@@ -425,7 +428,7 @@ gitbook pdf|epub|mobi
 
 ----
 
-### prh
+### prh.yml
 
 ```yml
 rules:
@@ -440,7 +443,7 @@ rules:
 
 ## なぜプロジェクト固有？
 
-- ルールを追加して**から**表記揺れを修正
+- ルールを追加して**から**表記揺れを修正できる
     - [connet => **C**onnectに統一 · Issue #48 · azu/JavaScript-Plugin-Architecture](https://github.com/azu/JavaScript-Plugin-Architecture/issues/48 "**C**onnectに統一しよう · Issue #48 · azu/JavaScript-Plugin-Architecture")
     - リグレッションテストと同じ意味合い
 - 表記がルールとして明文化できるので[Contribute](https://github.com/azu/JavaScript-Plugin-Architecture/blob/master/CONTRIBUTING.md "Contribute")しやすい
@@ -464,7 +467,7 @@ $ summary-to-path SUMMARY.md | xargs textlint
 
 > [textlintのAtomプラグイン - 1000ch.net](https://1000ch.net/posts/2015/linter-textlint.html "textlintのAtomプラグイン - 1000ch.net")
 
-![fit,inline, linter-textlint](https://gyazo.com/af14634690a0515c2c5ce56bd2fd6431.gif)
+![linter-textlint, center](../img/linter-textlint.gif)
 
 リアルタイムにチェックできて便利
 
@@ -472,10 +475,11 @@ $ summary-to-path SUMMARY.md | xargs textlint
 
 # textlintの仕組み
 
-1. Markdown or TextをASTに変換
-2. ASTは**TxtNode**というインタフェースを持つ
-    - 例えば、`node.type`が"Header"という種類
+1. Markdown/Text/HTMLをASTに変換
+2. ASTは**TxtNode**というオブジェクトからなる木構造のオブジェクト
+    - `node.type`が"Header"という種類
     - `node.raw`にテキストの中身、`node.loc`に行番号等の位置
+- これにより記号などに誤爆しないLintが可能になる
 
 -----
 
@@ -486,7 +490,7 @@ $ summary-to-path SUMMARY.md | xargs textlint
 
 -----
 
-## AST
+## ASTとルールスクリプト
 
 ![ast-lint, center](../img/ast-lint.png)
 
@@ -515,12 +519,13 @@ export default function(context){
 
 - textlintとルールスクリプトの関係はpub/sub
 - ルールスクリプトはやってくるnodeだけを考えればLintを書ける
-- やってくるnodeの流れは木構造を走査する形 [txt-ast-traverse](https://github.com/azu/txt-ast-traverse "txt-ast-traverse")
-- ルールが疎結合なので、自由にルールを追加できる！
+- 呼ばれるnodeの流れは木構造を[走査](https://github.com/azu/txt-ast-traverse)する順番
+    - 深さ優先探索
+- ルール同士は疎結合なので、自由にルールを追加できる！
 
 -----
 
-## 木構造のTraverse
+## 木構造の走査
 
 [![markdown ast](../img/md-ast.png)](http://azu.github.io/markdown-to-ast/example/)
 => 
@@ -531,10 +536,9 @@ export default function(context){
 
 ## エラーの通知
 
-![console error, center](../img/lint-error.png)
-
 - `context.report()`で報告されたエラーをフォーマッターで整形して出力
 
+![console error, center](../img/lint-error.png)
 
 -----
 
