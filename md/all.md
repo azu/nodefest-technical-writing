@@ -13,13 +13,13 @@
 
 # 目的
 
-- 技術文書を書くのは身近ものとなっている事を知る
+- 技術文書を書くのは手軽となっている事を知る
 - ブログ以上、技術書以下の文書を書くための構造を知る
 - 技術文書をテストする
 
 ----
 
-## なぜ技術文書？
+## なぜ技術文書というくくり？
 
 - "文書"だと小説とかも含まれてるのでやり方が異なりそう
 - 技術文書だと他よりセマンティックがはっきりしてる
@@ -53,12 +53,14 @@
 
 - 技術書と行っても出版物じゃない
 - 趣味で書くブログの延長線上
-    - 電子書籍として公開
-- ちなみにどんなもの => JavaScript Promiseの本、JavaScript Plugin Architecture
+- 電子書籍として公開していくようなものを対象
+- 技術書は技術文書を扱う時の問題の大分部に遭遇できる
 
 ----
 
 ## [JavaScript Promiseの本](http://azu.github.io/promises-book/ "JavaScript Promiseの本")
+
+![javascript-promise-book.jpg](../img/javascript-promise-book.jpg)
 
 -----
 
@@ -81,9 +83,11 @@
 
 - MarkdownからHTML/PDF/Epubへの変換
 - ファイルのincludeするMarkdown拡張
-- 文章のチェック
-- サンプルコードのチェック
+- 文章の自動チェック
+- サンプルコードの自動チェック
 - 使いやすいエディタ
+
+今回はMarkdownで書きたかったというだけです。
 
 ----
 
@@ -91,8 +95,8 @@
 
 - **[GitBook](https://www.gitbook.com/)** - MarkdownからHTML/PDF/Epubへの変換
 - **[GitBook](https://www.gitbook.com/)** - ファイルのincludeするMarkdown拡張
-- **[textlint](https://github.com/azu/textlint "textlint")** - 文章のチェック
-- **[ESLint](http://eslint.org/)** - サンプルコードのチェック
+- **[textlint](https://github.com/azu/textlint "textlint")** - 文章の自動チェック
+- **[ESLint](http://eslint.org/)** - サンプルコードの自動チェック
 - **好きなMarkdownエディタ** - 使いやすいエディタ
 
 ----
@@ -117,7 +121,7 @@
 ## [gitbook.com](https://www.gitbook.com)
 
 - GitBookの公開プラットフォーム
-- HTML/PDF/Epub/mobiの自動生成、コミット毎プレビュー、販売/寄付、Organization、アップデート通知、オンラインエディタ、Issue
+- HTML/PDF/Epub/mobiの自動生成、コミット毎ビルド、販売/寄付、Organization、アップデート通知、オンラインエディタ、Issue
 - GitHubとDeployment APIでhookして自動的に反映
     - Pull Requestのコミット毎にプレビューできる
     
@@ -137,12 +141,18 @@
 
 これだけでとりあえず電子書籍ができる
 
-```
+```sh
 npm i -g gitbook-cli
-touch README.md
-touch SUMMARY.md
+echo "# 初めてのGitBook" > README.md
+echo "- [README](./README.md)" > SUMMARY.md
 gitbook serve
 ```
+
+-----
+
+## 初めてのGitBookプレビュー
+
+![center first git](../img/first-gitbook.jpg)
 
 -----
 
@@ -934,3 +944,9 @@ textlint、ESLint、Mochaでテスト
 - [Promise本で取り組んだ電子書籍の開発ツール、CI、継続的リリースについて | Web Scratch](http://efcl.info/2015/01/06/ebook-env/ "Promise本で取り組んだ電子書籍の開発ツール、CI、継続的リリースについて | Web Scratch")
     - Promise本の時の話 [Githubで書く電子書籍](http://azu.github.io/slide/individual/ "Githubで書く電子書籍")
 - [textlintで日本語の文章をチェックする | Web Scratch](http://efcl.info/2015/09/10/introduce-textlint/ "textlintで日本語の文章をチェックする | Web Scratch")
+
+-----
+
+# Next Schedule
+
+![schedule center](../img/2015-11-07_00-56-12.png)
