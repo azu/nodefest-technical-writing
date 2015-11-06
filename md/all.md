@@ -894,7 +894,7 @@ textlint、ESLint、Mochaでテスト
 
 -------
 
-# まとめ
+# まとめ1
 
 - 文書のテストはまだまだ色々できることがある
 - [カバレッジを取る](https://github.com/azu/punctuate-coverage)とかメトリクスを取るとか
@@ -903,7 +903,7 @@ textlint、ESLint、Mochaでテスト
 
 -------
 
-# まとめ
+# まとめ2
 
 - ユニットテスト = 自動校正
 - リファクタリング = 推敲
@@ -912,7 +912,7 @@ textlint、ESLint、Mochaでテスト
 
 -----
 
-# まとめ
+# まとめ3
 
 - 技術文書の開発でもソフトウェア開発と同じ手法は取れる
 - GitBookとかRedPenとかtextlintなど文書を書くのに便利なツールが増えた
