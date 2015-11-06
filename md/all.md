@@ -51,9 +51,16 @@
 
 # 技術書
 
-どのようなツールを使って技術書を開発できるか
+- 技術書と行っても出版物じゃない
+- 趣味で書くブログの延長線上
+    - 電子書籍として公開
+- ちなみにどんなもの => JavaScript Promiseの本、JavaScript Plugin Architecture
 
 ----
+
+## [JavaScript Promiseの本](http://azu.github.io/promises-book/ "JavaScript Promiseの本")
+
+-----
 
 ## [JavaScript Plugin Architecture](https://github.com/azu/JavaScript-Plugin-Architecture "JavaScript Plugin Architecture")
 
