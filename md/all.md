@@ -129,6 +129,7 @@
     - [Redux](http://redux.js.org/)
 - 技術書
     - [Front-end Handbook - GitBook](https://www.gitbook.com/book/frontendmasters/front-end-handbook/details "Front-end Handbook - GitBook")
+- このスライドもGitBook
 
 -----
 
@@ -265,9 +266,8 @@ gitbook pdf|epub|mobi
 
 - 自然言語は動的型付け言語
     - コンパイルエラーじゃなくてランタイムエラー
-- コンテキストによって意味解釈が変わる
-- 規則性はあるが例外も多い
 - ランタイムエラー(誤字、脱字)が発生する
+    - しかも実行エンジン(人間)はエラーを見逃す事がある
     
 ----
 
@@ -276,6 +276,9 @@ gitbook pdf|epub|mobi
 > 自然言語の意味は、その文脈（コンテキスト）によって定まる部分も多い。
 > これに対して、プログラミング言語は、コンピュータによって扱いやすいように、文脈によって意味が変わることができるだけないように設計されている。
 > -- [プログラミング言語 - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E "プログラミング言語 - Wikipedia")
+
+- コンテキストによって意味解釈が変わる
+- 規則性はあるが例外も多い
 
 ----
 
@@ -346,16 +349,8 @@ gitbook pdf|epub|mobi
     - 一文に利用できる`、`の数をチェックするルール
 - [textlint-rule-spellcheck-tech-word](https://github.com/azu/textlint-rule-spellcheck-tech-word)
     - WEB+DB用語統一ルールベースの単語チェックするルール
+- 他のルール => [Collection of textlint rule](https://github.com/azu/textlint/wiki/Collection-of-textlint-rule "Collection of textlint rule · azu/textlint Wiki")
     
-----
-
-## textlintのルール2
-
-- [textlint-rule-no-start-duplicated-conjunction](https://github.com/azu/textlint-rule-no-start-duplicated-conjunction "azu/textlint-rule-no-start-duplicated-conjunction")
-    - _「しかし、〜。 しかし、〜。」_ など同じ接続詞が連続してないかをチェックするルール
-- textlintのルールは以下にまとめられている
-    - [Collection of textlint rule · azu/textlint Wiki](https://github.com/azu/textlint/wiki/Collection-of-textlint-rule "Collection of textlint rule · azu/textlint Wiki")
-
 ----
 
 ## [JTF日本語標準スタイルガイド](https://www.jtf.jp/jp/style_guide/styleguide_top.html "JTF日本語標準スタイルガイド（翻訳用）")
@@ -547,6 +542,14 @@ export default function(context){
 
 ![console error, center](../img/lint-error.png)
 
+----
+
+## 仕組みの詳細
+
+- [textlintから学んだこと](http://azu.github.io/slide/reactsushi/textlint.html)
+- [ESLint | JavaScript Plugin Architecture](https://azu.gitbooks.io/javascript-plugin-architecture/content/ja/ESLint/index.html)
+    - ESLintのプラグインアーキテクチャと基本は同じ
+
 -----
 
 ## texlint まとめ
@@ -584,7 +587,7 @@ export default function(context){
 - 普通に`.js`などのファイルとして書くだけ
 - 要は普通のJavaScript
 - ファイルに対して[ESLint](http://eslint.org/ "ESLint")でLint
-- コードに対してテストを書く
+- コードに対してテストを書けばいいだけ
 
 ----
 
@@ -597,8 +600,8 @@ export default function(context){
 [include, test.js](example/test.js)
 ```
 
-`include`というコマンドがラベルにあれば展開される。
-=> GitHub上ではただのリンクとなる(Fallback)
+- `include`というコマンドがラベルにあれば展開される。
+- => GitHub上ではただのリンクとなる(Fallback)
 
 ----
 
@@ -617,7 +620,7 @@ export default function(context){
 ## インラインコードのLint
 
 - [eslint/eslint-plugin-markdown](https://github.com/eslint/eslint-plugin-markdown "eslint/eslint-plugin-markdown")を利用
-- ESLintのプラグインとしてインラインコードをLintできる
+- ESLintのプラグインとしてMarkdownのインラインコードチェックできる
     - `js`や`javascript`といったCodeBlockに対してLint
 
 
@@ -646,7 +649,7 @@ export default function(context){
 ## サンプルコードのテストまとめ
 
 - サンプルコードは2種類ある
-- 外部ファイルは普通のJavaScriptと同じ手法が使える
+- 外部ファイルの場合は普通のJavaScriptと同じテストができる
 - Markdownの中に埋め込まれたインラインコードは特殊
     - 一番間違いが起こりやすいのでチェックする
 - サンプルコードが嘘つく文章はよくない
