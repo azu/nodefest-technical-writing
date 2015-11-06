@@ -600,7 +600,7 @@ export default function(context){
 [include, test.js](example/test.js)
 ```
 
-- `include`というコマンドがラベルにあれば展開される。
+- `include`というコマンドがラベルにあれば展開
 - => GitHub上ではただのリンクとなる(Fallback)
 
 ----
