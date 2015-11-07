@@ -13,7 +13,7 @@
 
 # 目的
 
-- 技術文書を書くのは手軽となっている事を知る
+- 技術文書を書く環境は簡単に作れる事を知る
 - ブログ以上、技術書以下の文書を書くための構造を知る
 - 技術文書をテストする
 
@@ -327,6 +327,14 @@ gitbook pdf|epub|mobi
 - デフォルトのルールはない
 - ESLintと同じくPlugableにルールを追加することができる
 - JavaScriptでルールを簡単に書くことができる
+
+-----
+
+# DEMO
+
+<video src="../img/textlint-demo.mp4" width="640" height="360" controls>
+<source src="../img/textlint-demo.mp4" type="video/mp4">
+</video>
 
 -----
 
