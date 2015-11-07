@@ -1,5 +1,5 @@
 {
-  "gitbook": ">=2.0.0",
+  "gitbook": "2.5.2",
   "name": "nodefest-technical-writing",
   "title": "技術文書をソフトウェア開発する話",
   "description": "技術文書をソフトウェア開発のように書くためのツールや方法",
@@ -11,12 +11,16 @@
   },
   "plugins": [
     "fontsettings",
-    "japanese-support"
+    "japanese-support",
+    "canonical-link"
   ],
   "pluginsConfig": {
     "fontSettings": {
       "theme": "night",
       "size": 3
+    },
+    "canonical-link": {
+      "canonicalURL": "https://azu.gitbooks.io/nodefest-technical-writing/content/"
     }
   }
 }
